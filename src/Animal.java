@@ -2,7 +2,7 @@ import java.util.Random;
 
 public class Animal {
 
-    private String name;
+    private final String name;
 
     public Animal(String name) {
         this.name = name;
@@ -10,10 +10,6 @@ public class Animal {
 
     public String getName() {
         return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public int randomRunDist() {
