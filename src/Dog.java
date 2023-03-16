@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Random;
 
 public class Dog extends Animal {
@@ -6,14 +7,27 @@ public class Dog extends Animal {
         super(name);
     }
 
-    @Override
-    public String getName() {
-        return super.getName();
+    public static String dogRandomName() {
+        var random = new Random();
+        var list = Arrays.asList("Бобік", "Джек", "Річі", "Арчі", "Джесі", "Гаррі", "Сем", "Річі", "Чаппі", "Tім");
+        return list.get(random.nextInt(list.size()));
     }
 
-    @Override
-    public void setName(String name) {
-        super.setName(name);
+    public static String oneDogResult() {
+        Dog dog = new Dog(dogRandomName());
+        return dog.getName() + " пробіг " + dog.randomRunDist() + " м.," + " проплив " + dog.randomSwimDist() + " м.";
+    }
+
+    public static void allDogsResultOutput() {
+        System.out.println("""
+
+                Результати змагань собак:
+                -------------------------------""");
+        var random = new Random();
+        dogCount = random.nextInt(10) + 1;
+        for (var i = 1; i <= dogCount; i++) {
+            System.out.println(i + ". " + oneDogResult());
+        }
     }
 
     @Override
@@ -33,4 +47,6 @@ public class Dog extends Animal {
         var random = new Random();
         return random.nextInt(diff + 1) + min;
     }
+
+    public static int dogCount;
 }
