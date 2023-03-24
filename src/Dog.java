@@ -2,9 +2,14 @@ import java.util.Arrays;
 import java.util.Random;
 
 public class Dog extends Animal {
+    private static int dogCounter;
 
     public Dog(String name) {
         super(name);
+    }
+
+    public static int getDogCounter() {
+        return dogCounter;
     }
 
     public static String dogRandomName() {
@@ -15,6 +20,7 @@ public class Dog extends Animal {
 
     public static String oneDogResult() {
         Dog dog = new Dog(dogRandomName());
+        dogCounter++;
         return dog.getName() + " пробіг " + dog.randomRunDist() + " м.," + " проплив " + dog.randomSwimDist() + " м.";
     }
 
@@ -24,7 +30,7 @@ public class Dog extends Animal {
                 Результати змагань собак:
                 -------------------------------""");
         var random = new Random();
-        dogCount = random.nextInt(10) + 1;
+        var dogCount = random.nextInt(10) + 1;
         for (var i = 1; i <= dogCount; i++) {
             System.out.println(i + ". " + oneDogResult());
         }
@@ -47,6 +53,4 @@ public class Dog extends Animal {
         var random = new Random();
         return random.nextInt(diff + 1) + min;
     }
-
-    public static int dogCount;
 }
