@@ -2,9 +2,14 @@ import java.util.Arrays;
 import java.util.Random;
 
 public class Cat extends Animal {
+    private static int catCounter;
 
     public Cat(String name) {
         super(name);
+    }
+
+    public static int getCatCounter() {
+        return catCounter;
     }
 
     public static String catRandomName() {
@@ -15,13 +20,14 @@ public class Cat extends Animal {
 
     public static String oneCatResult() {
         Cat cat = new Cat(catRandomName());
+        catCounter++;
         return cat.getName() + " пробіг " + cat.randomRunDist() + " м., плавати не вміє.";
     }
 
     public static void allCatsResultOutput() {
         System.out.println("Результати змагань кішок:" + "\n-------------------------------");
         var random = new Random();
-        catCount = random.nextInt(10) + 1;
+        var catCount = random.nextInt(10) + 1;
         for (var i = 1; i <= catCount; i++) {
             System.out.println(i + ". " + oneCatResult());
         }
@@ -35,6 +41,4 @@ public class Cat extends Animal {
         var random = new Random();
         return random.nextInt(diff + 1) + min;
     }
-
-    public static int catCount;
 }
